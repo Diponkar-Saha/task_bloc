@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testbloctask/utils/util_color.dart';
+import 'package:task_bloc/utils/util_color.dart';
 
 
 abstract class UtilText {
