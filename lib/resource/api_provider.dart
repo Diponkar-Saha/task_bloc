@@ -8,7 +8,7 @@ class ApiProvider {
 
   Future<SearchResponse> fetchCovidList(String slug) async {
     try {
-      Response response = await _dio.get('$BASE_URL/product/search-suggestions/?limit=10&search=$slug');
+      Response response = await _dio.get('https://panel.supplyline.network/api/product/search-suggestions/?limit=10&search=$slug');
       return SearchResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
@@ -18,7 +18,8 @@ class ApiProvider {
   Future<ProductResponse> fetchProduct(String slug) async {
     try {
 
-      Response response = await _dio.get('$BASE_URL/product-details/$slug/');
+      Response response = await _dio.get('https://panel.supplyline.network/api/product-details/$slug/');
+      print(response.data);
       return ProductResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
