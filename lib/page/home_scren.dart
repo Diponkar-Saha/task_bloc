@@ -170,7 +170,15 @@ class _SearchPageState extends State<SearchPage> {
               child:InkWell(
 
                 onTap: (){
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailScreen( ),
+                      settings: RouteSettings(
+                        arguments: model.data.products.results![index].slug,
+                      ),
+                    ),
+                  );
                 },
                 child: Container(
                   child: Column(
