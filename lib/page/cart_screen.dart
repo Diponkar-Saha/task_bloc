@@ -28,13 +28,13 @@ class _CartScreenState extends State<CartScreen> {
 
   }
   Widget _buildListCovid(BuildContext context) {
-    final todo = ModalRoute.of(context)!.settings.arguments as ProductResponse;
+    final model = ModalRoute.of(context)!.settings.arguments as ProductResponse;
 
 
-    return Text("${todo.data?.productName}");
+    return _buildCard(context,model );
   }
 
-  Widget _buildLoading() => Center(child: CircularProgressIndicator());
+
   Widget _buildCard(BuildContext context, ProductResponse model) {
     return Container(
       color: UtilColor.colorBackground,
@@ -217,13 +217,6 @@ class _CartScreenState extends State<CartScreen> {
 
             InkWell(
               onTap: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CartScreen(),
-                    settings: RouteSettings(
-                      arguments: model,
-                    ),),);
 
               },
               child: ClipPath(
@@ -232,7 +225,13 @@ class _CartScreenState extends State<CartScreen> {
                   width: 80,
                   color: UtilColor.colorCart,
                   child: Center(
-                    child: Text("এটিক\nকিনুন",style: TextStyle(color: Colors.white)),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 10,),
+                        Icon(Icons.shopping_cart,color: Colors.white,),
+                        Text("কার্ট",style: TextStyle(color: Colors.white)),
+                      ],
+                    ),
                   ),
                 ),
                 clipper: _Hexagon(),
@@ -290,7 +289,7 @@ class _CartScreenState extends State<CartScreen> {
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            //set border radius more than 50% of height and width to make circle
+
           ),
           child: ListTile(
 
@@ -315,6 +314,7 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 }
+
 Widget _buildCircle(BuildContext context) {
   return CustomPaint(
     size: Size(10, 10),
